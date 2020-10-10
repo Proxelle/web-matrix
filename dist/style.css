@@ -1,0 +1,33 @@
+th, td {
+    border-style: solid;
+    border-width: 1px;
+    border-color: grey;
+    min-width: 20px;
+    padding: 0;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-align: right;
+}
+input {
+    max-width: 70px;
+    border: 1px solid white;
+    outline: none;
+    text-align: right;
+}
+input:focus {
+    border: 1px solid red;
+}
+#row-date td {
+    text-align: center;
+    background-color: rgb(194, 194, 194);
+}
+#row-sum td {
+    max-width: 70px;
+    text-align: right;
+    overflow: hidden;
+    background-color: rgb(241, 241, 241);
+}
+table tr td:first-child {
+    text-align: left !important;
+    padding: 1px 10px;
+}
