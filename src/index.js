@@ -89,7 +89,11 @@ function addValuesInInputs () {
 }
 
 function changeInput (e) {
-    const value = Number(e.target.value)
+    let value = Number(e.target.value)
+    if (!Number.isInteger(value)) {
+        e.target.value = (+e.target.value).toFixed(2)
+        value = Number(e.target.value)
+    } else e.target.value = (+e.target.value).toFixed(0)
     const type = this.type
     const day =  this.day
     const index = allMoney.findIndex(item => item.type === type && item.day === day)
@@ -117,13 +121,6 @@ function renderSum ({ type, day }) {
     const sumDayElement = document.getElementById(`day-sum-${day}`)
     const sumWorkTypeElement = document.getElementById(`work-sum-${type}`)
 
-    sumDayElement.innerHTML = sumDay
-    sumWorkTypeElement.innerHTML = sumWorkType
-}
-
-function getFile (fileName) {
-    let request = new XMLHttpRequest()
-    request.open('GET', fileName)
-    request.onloadend = () => console.log(SON.parse(request.responseText))
-    request.send()
+    sumDayElement.innerHTML = Number.isInteger(sumDay) ? sumDay : sumDay.toFixed(2)
+    sumWorkTypeElement.innerHTML = Number.isInteger(sumWorkType) ? sumWorkType : sumWorkType.toFixed(2)
 }
